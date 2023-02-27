@@ -41,12 +41,15 @@ export class PersonsComponent implements OnInit {
         this.selectedPersons = data;
       }
     )    
-
-    //this.selectedPersons = this.personService.getAll();
   }
-
 
   getSelectedPersons():void {
-    this.selectedPersons = this.personService.getSelected(this.personalId, this.dateOfBirth);
+    // this.selectedPersons = this.personService.getSelected(this.personalId, this.dateOfBirth);
+    this.personService.getSelectedPersonList(this.personalId,this.dateOfBirth).subscribe(
+      data => {
+        this.selectedPersons = data;
+      }
+    )    
   }
+
 }
