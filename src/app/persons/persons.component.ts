@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PERSONS } from '../mock-persons';
 import { Person } from '../person';
+import { PersonService } from '../person.service';
 
 @Component({
   selector: 'app-persons',
@@ -14,7 +15,7 @@ export class PersonsComponent implements OnInit {
   selectedPersons:Person[] = [];
   errorMsg:string= "";
 
-  constructor() { }
+  constructor(private personService: PersonService) { }
 
   ngOnInit(): void {
   }
@@ -35,13 +36,17 @@ export class PersonsComponent implements OnInit {
   }
 
   getAllPersons():void {
-    this.selectedPersons = PERSONS;
+    this.personService.getPersonList().subscribe(
+      data => {
+        this.selectedPersons = data;
+      }
+    )    
+
+    //this.selectedPersons = this.personService.getAll();
   }
 
 
   getSelectedPersons():void {
-    this.selectedPersons = PERSONS;
+    this.selectedPersons = this.personService.getSelected(this.personalId, this.dateOfBirth);
   }
-
-
 }

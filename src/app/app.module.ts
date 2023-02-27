@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { PersonsComponent } from './persons/persons.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,    
     FormsModule
   ],
   providers: [],
